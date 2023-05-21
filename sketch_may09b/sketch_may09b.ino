@@ -538,7 +538,7 @@ Cat cat(&spriteChat);
 Ennemi ennemiBraid(10, 8,&spriteNianBread);
 Ennemi ennemiPelote(10, 8,&spritePelotes);
 Ennemi ennemiOiseau(10, 8,&spriteOiseau);
-
+int score = 0;
 
 
 void loop() {
@@ -547,13 +547,15 @@ void loop() {
   gb.display.drawImage(0,0, spriteBackground);
 
   if (cat.collision(ennemiBraid) || cat.collision(ennemiPelote) || cat.collision(ennemiOiseau)) {
-    gb.display.print("GameOver");
+    gb.display.print("Game Over\nDernier score : ");
+    gb.display.print(score);
   } else {
     cat.hooks();
     ennemiBraid.generate();
     ennemiPelote.generate();
     ennemiOiseau.generate();
-
+    score += 1;
+    gb.display.print(score);
   }
 
 }
